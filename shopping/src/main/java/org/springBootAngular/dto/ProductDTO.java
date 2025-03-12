@@ -31,7 +31,7 @@ public class ProductDTO {
 
         private Integer stockQuality;
 
-        private String decription;
+        private String description;
 
         private LocalDateTime expireDate;
 

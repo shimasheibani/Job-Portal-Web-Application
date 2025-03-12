@@ -1,4 +1,4 @@
-package com.jobs.portal.jobportal.entity;
+package com.dreamjob.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class JobCompany {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "VARCHAR2(255)")
+//    @Column(columnDefinition = "VARCHAR2(255)")
     private String logo;
     @Column(columnDefinition = "VARCHAR2(255)")
     private String name;

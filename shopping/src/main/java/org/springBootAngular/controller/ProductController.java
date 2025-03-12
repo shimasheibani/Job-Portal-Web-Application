@@ -34,7 +34,7 @@ public class ProductController {
         productDTO.setPrice(price);
         productDTO.setStockQuality(stockQuality);
         productDTO.setCategoryId(categoryId);
-        productDTO.setDecription(description);
+        productDTO.setDescription(description);
         return ResponseEntity.ok(productService.saveProduct(productDTO, imgFile));
     }
 
@@ -45,7 +45,7 @@ public class ProductController {
     }
     @GetMapping("/product/{id}")
     @PreAuthorize("hasAuthority('Admin')")
-    public ResponseEntity<Response> getProfuctById(@PathVariable Long id){
+    public ResponseEntity<Response> getProductById(@PathVariable Long id){
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
@@ -67,7 +67,7 @@ public class ProductController {
         productDTO.setPrice(price);
         productDTO.setStockQuality(stockQuality);
         productDTO.setCategoryId(categoryId);
-        productDTO.setDecription(description);
+        productDTO.setDescription(description);
         return ResponseEntity.ok(productService.updateProduct(productDTO, imgFile));
     }
 

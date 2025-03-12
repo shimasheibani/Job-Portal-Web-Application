@@ -1,4 +1,4 @@
-package com.jobs.portal.jobportal.entity;
+package com.dreamjob.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,10 @@ public class Skills {
     private String name;
     @Column(columnDefinition = "VARCHAR2(255)", name = "year_of_experience")
     private String yearOfExperience;
-    @ManyToOne()
-    @JoinColumn(name="job+seeker_profile")
+
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="job_seeker_profile")
     private JobSeekerProfile jobSeekerProfile;
 }

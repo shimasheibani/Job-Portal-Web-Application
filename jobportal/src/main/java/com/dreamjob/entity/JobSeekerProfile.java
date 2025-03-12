@@ -1,10 +1,12 @@
-package com.jobs.portal.jobportal.entity;
+package com.dreamjob.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Builder
@@ -26,7 +28,7 @@ public class JobSeekerProfile {
     private String firstName;
     @Column(columnDefinition = "VARCHAR2(255)", name = "last_name")
     private String lastName;
-    @Column(columnDefinition = "VARCHAR2(64)" , name = "profile_photo")
+    @Column(length = 64,nullable = true, name = "profile_photo")
     private String profilePhoto;
     @Column(columnDefinition = "VARCHAR2(255)")
     private String resume;
@@ -34,4 +36,23 @@ public class JobSeekerProfile {
     private String state;
     @Column(columnDefinition = "VARCHAR2(255)", name="work_authorization")
     private String workAuthorization;
+
+    @OneToOne
+    @JoinColumn(name = "user_account_id")
+    @MapsId
+    private User user;
+
+    @OneToMany(targetEntity = Skills.class,cascade = CascadeType.ALL, mappedBy = "jobSeekerProfile")
+    private List<Skills> skills;
+
+    public JobSeekerProfile(User user) {
+        this.user = user;
+    }
+
+    public String getPhotoImagePath(){
+        if (profilePhoto==null || profilePhoto.isEmpty()){
+            return null;
+        }
+        return "/photos/candidate/" + id + "/" + profilePhoto;
+    }
 }

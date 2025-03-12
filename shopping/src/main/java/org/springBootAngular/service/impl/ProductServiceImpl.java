@@ -6,7 +6,6 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springBootAngular.dto.ProductDTO;
 import org.springBootAngular.dto.Response;
-import org.springBootAngular.dto.SupplierDTO;
 import org.springBootAngular.entity.Category;
 import org.springBootAngular.entity.Product;
 import org.springBootAngular.exception.NotFoundException;
@@ -39,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
                 .category(category)
                 .price(productDTO.getPrice())
                 .stockQuality(productDTO.getStockQuality())
-                .decription(productDTO.getDecription())
+                .description(productDTO.getDescription())
                 .build();
         if(imgFile != null){
             String imagePath = saveImage(imgFile);
@@ -96,8 +95,8 @@ public class ProductServiceImpl implements ProductService {
         if(productDTO.getPrice() != null && !(productDTO.getPrice().compareTo(BigDecimal.ZERO) >=0)){
             product.setPrice(productDTO.getPrice());
         }
-        if(productDTO.getDecription() != null && !productDTO.getDecription().isBlank()){
-            product.setDecription(productDTO.getDecription());
+        if(productDTO.getDescription() != null && !productDTO.getDescription().isBlank()){
+            product.setDescription(productDTO.getDescription());
         }
         if(productDTO.getSku() != null && !productDTO.getSku().isBlank()){
             product.setSku(productDTO.getSku());

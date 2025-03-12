@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Table(name= "recuiter_profile")
-public class RecuiterProfile {
+public class RecruiterProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,7 +37,13 @@ public class RecuiterProfile {
     @MapsId
     private User user;
 
-    public RecuiterProfile(User user) {
-        this.user=user;
+    public RecruiterProfile(User savedUser) {
     }
+
+    @Transient
+    public String getPhotosImagePath(){
+        if(profilePhoto == null || user == null) return null;
+        return "/photos/recruiter/" + user.getId() + "/" + profilePhoto;
+    }
+
 }

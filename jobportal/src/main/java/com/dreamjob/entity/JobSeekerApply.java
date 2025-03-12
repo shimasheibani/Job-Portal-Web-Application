@@ -1,11 +1,10 @@
-package com.jobs.portal.jobportal.entity;
+package com.dreamjob.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.usertype.UserType;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.jobs.portal.jobportal.entity;
+package com.dreamjob.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
