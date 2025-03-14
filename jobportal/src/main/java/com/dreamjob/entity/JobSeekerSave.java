@@ -11,15 +11,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_seeker_save")
+@Table(name = "job_seeker_save", uniqueConstraints = {
+        @UniqueConstraint(
+                columnNames = {"user_id", "id"}
+        )
+})
 public class JobSeekerSave {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne()
-    @JoinColumn(name="job")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="job", referencedColumnName = "id")
     private JobPostActivity jobPostActivity;
-    @ManyToOne()
-    @JoinColumn(name="user_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id", referencedColumnName = "id")
     private JobSeekerProfile jobSeekerProfile;
 }

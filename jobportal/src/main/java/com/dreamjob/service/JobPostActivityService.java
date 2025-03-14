@@ -6,8 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -30,4 +32,13 @@ public class JobPostActivityService {
     public JobPostActivity getOne(Long id) {
         return jobPostActivityRepository.findById(id).orElseThrow(()->new RuntimeException("Job not found"));
     }
+    public List<JobPostActivity> getAll() {
+        return jobPostActivityRepository.findAll();
+    }
+    public List<JobPostActivity> search(String job, String location, List<String> type, List<String> remote, LocalDate searchDate) {
+        return Objects.isNull(searchDate)?jobPostActivityRepository.searchWithoutDate(job,location,remote,type):
+                jobPostActivityRepository.search(job,location,remote,type, searchDate);
+    }
+
+
 }
