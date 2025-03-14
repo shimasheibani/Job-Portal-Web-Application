@@ -49,6 +49,7 @@ public class JobSeekerProfile {
         this.user = user;
     }
 
+    @Transient
     public String getPhotoImagePath(){
         if (profilePhoto==null || profilePhoto.isEmpty()){
             return null;

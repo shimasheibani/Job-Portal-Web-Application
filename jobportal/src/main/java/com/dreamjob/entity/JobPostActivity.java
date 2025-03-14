@@ -48,4 +48,7 @@ public class JobPostActivity {
 
     @Transient
     private boolean isActive;
+
+    @Transient
+    private boolean isSaved;
 }

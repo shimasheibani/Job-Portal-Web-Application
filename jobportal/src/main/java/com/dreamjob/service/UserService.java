@@ -28,6 +28,7 @@ public class UserService {
     private final JobSeekerProfileRepository jobSeekerProfileRepository;
     private final PasswordEncoder passwordEncoder;
 
+
     public User AddUser(User user) {
         user.set_active(true);
         user.setRegistrationDate(new Date(System.currentTimeMillis()));
@@ -67,4 +68,9 @@ public class UserService {
         }
         return null;
     }
+
+    public User findByEmail(String username) {
+        return userRepository.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("User not found."));
+    }
+
 }
